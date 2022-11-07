@@ -10,8 +10,8 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
+			pages: 'docs',
+			assets: 'docs',
 			// paths: { base: '/Users/see2et/repos/blog-by-svelte-kit/build' },
 			// fallback: 'index.html',
 			precompress: false,
