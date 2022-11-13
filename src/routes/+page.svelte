@@ -1,18 +1,31 @@
-<script>
-// @ts-nocheck
-
-    // @ts-ignore
-    import dayjs from "dayjs"
-    // 日付表示でラクしたいので。`npm i dayjs` でインストールし、ここでインポート
-
-    /**
-	 * @type {{ contents: any; }}
-	 */
-     export let data
-     import { base } from '$app/paths';
+<script lang="ts">
+    import dayjs from "dayjs";
+    import { base } from '$app/paths';
+    interface Content {
+        id: string;
+        createdAt: string;
+        updatedAt: string;
+        publishedAt: string;
+        RevisedAt: string;
+        title: string;
+        desc: string;
+        body: string;
+        ecimg: {
+            url: string;
+            height: number;
+            width: number;
+        }
+    }
+    interface Data {
+        contents: Content[];
+        totalCount: number;
+        offset: number;
+        limit: number;
+    }
+    export let data: Data | { error: true };
 </script>
 
-{#if data?.error}
+{#if "error" in data}
     <p>記事の取得に失敗しました</p>
 {:else}
     {#each data.contents as x}
